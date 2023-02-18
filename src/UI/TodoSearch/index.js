@@ -4,7 +4,6 @@ import './TodoSearch.css';
 
 function TodoSearch({ searchValue, setSearchValue, loading }) {
   const [ params, setParams ] = useSearchParams();
-  const paramValue = params.get('search');
 
   const onSearchValueChange = (event) => {
     setSearchValue(event.target.value);
