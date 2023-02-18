@@ -9,7 +9,6 @@ import { TodoItem } from '../../UI/TodoItem';
 import { TodosError } from '../../UI/TodosError';
 import { TodosLoading } from '../../UI/TodosLoading';
 import { EmptyTodos } from '../../UI/EmptyTodos';
-import { TodoForm } from '../../UI/TodoForm';
 import { CreateTodoButton } from '../../UI/CreateTodoButton';
 import { ChangeAlert } from '../../UI/ChangeAlert';
 
@@ -23,13 +22,10 @@ function HomePage() {
     searchedTodos,
     totalTodos,
     completedTodos,
-    // openModal,
     searchValue,
   } = state;
 
   const {
-    // setOpenModal,
-    // addTodo,
     completeTodo,
     deleteTodo,
     setSearchValue,
@@ -67,25 +63,15 @@ function HomePage() {
             key={todo.id}
             text={todo.text}
             completed={todo.completed}
-            onEdit={() => navigate(`/edit/${todo.id}`)}
+            onEdit={() => { navigate(`/edit/${todo.id}`, {  state: { todo }  } )}}
             onComplete={() => completeTodo(todo.id)}
             onDelete={() => deleteTodo(todo.id)}
           />
         )}
       </TodoList>
 
-      {/* {!!openModal && (
-        <Modal>
-          <TodoForm
-            addTodo={addTodo}
-            setOpenModal={setOpenModal}
-          />
-        </Modal>
-      )} */}
-
       <CreateTodoButton
         onClick={() => navigate('/new')}
-        // setOpenModal={setOpenModal}
       />
 
       <ChangeAlert

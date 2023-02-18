@@ -1,11 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './TodoForm.css';
 
 function TodoForm(props) {
+  const location = useLocation();
   const navigate = useNavigate();
-  const [newTodoValue, setNewTodoValue] = React.useState('');
-
+  const [newTodoValue, setNewTodoValue] = React.useState(props.defaultTodoText || '');
+  
   const onChange = (event) => {
     setNewTodoValue(event.target.value);
   };
